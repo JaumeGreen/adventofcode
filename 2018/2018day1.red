@@ -1,28 +1,21 @@
-    Red [Needs: 'View]
+    Red []
 
-    fileday1: %/C/Users/Jaume/Documents/adventofcode/2018/day1.input
-    testcase: load fileday1
- ;   testcase: [1 -1 2]
+    ;fileday1: %/C/Users/Jaume/Documents/adventofcode/2018/day1.input
+    ;testcase: load fileday1
+    testcase: [8 -20 13]
 
-;    probe testcase
-    iterator: 1
     accumulator: 0
-    freqlist: [0]
-    while [pick testcase iterator] [
-        accumulator: accumulator + pick testcase iterator
-        iterator: iterator + 1
-    ]
+    foreach iterator testcase [accumulator: accumulator + iterator]
     probe "part 1"
     probe accumulator
 
-    iterator: 1
     accumulator: 0
-    freqlist: []
+    freqlist: copy []
     while [not find freqlist accumulator] [
         append freqlist accumulator
-        accumulator: accumulator + pick testcase iterator
-        iterator: iterator + 1
-        if not pick testcase iterator [iterator: 1]
+        accumulator: accumulator + first testcase
+        testcase: next testcase
+        if tail? testcase [testcase: head testcase]
     ]
     
     probe "part 2"
