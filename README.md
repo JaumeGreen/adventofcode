@@ -5,7 +5,7 @@ Done as time permits.
 
 https://adventofcode.com/
 
-h3. 2018/  
+## 2018
 
 language used:
 red programming language: https://www.red-lang.org/
