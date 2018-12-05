@@ -1,7 +1,7 @@
 Red []
 
 fileday: %/C/Users/Jaume/Documents/adventofcode/2018/day2.input
-testcase: load fileday
+testcase: load fileday ;TODO change to read/lines
 ;testcase: [
 ;    abcdef 
 ;    bababc 
@@ -15,7 +15,7 @@ testcase: load fileday
 doubles: 0
 triples: 0
 forall testcase [
-    line: sort copy form first testcase
+    line: sort copy form first testcase ;TODO remove form
     values: unique line
 
     hasdouble: false
@@ -57,7 +57,7 @@ print doubles * triples
 
 found: false
 forall testcase [
-    line: form first testcase
+    line: form first testcase ;TODO remove form
     inner: next testcase
     forall inner [
         innerline: form first inner
@@ -107,7 +107,7 @@ clones: func [
         collect some [ ;'some' means to keep matching what's in the pattern until it fails or the end of the string. 1 or more repetitions.
             ahead [set letter skip]   ; remember the first letter in advance
                                       ;'set' copies the letter as a single element, not a series. skips a letter
-            copy duplicate 2 3 letter ; try to match a group of 2 or 3 letters
+            copy duplicate 2 3 letter ; try to match a group of 2 or 3 letters, copy them to duplicate
             keep (length? duplicate)  ; if we suceed, then we keep the length of a matched group
             | skip ;skip mean that anything that doesn't match the previous pattern will match here
         ]
