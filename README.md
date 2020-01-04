@@ -15,7 +15,7 @@ day 4 half day done
 
 Quite a nice programming language, dense enough to be used on mobile.
 Unfortunately it seems read only, as in it's easier to write than to read.
-Also I have the "it works on my computer" with myself. The solutions worked on my phone, but don't work on my computer. Further investigation will be done when time permits.
+Some slight divergences between mobile and computer because I took shorcuts on mobile (didn't load or parse the file).
 
 ## 2018
 
