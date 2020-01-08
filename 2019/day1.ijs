@@ -11,7 +11,8 @@
 
    NB. computer version
    inputfile =. < 'C:\day1.input'
-   input =. ". > (10{a.) strsplit 1!:1 inputfilestrsplit=: #@[ }.each [ (E. <;.1 ]) ,
+   strsplit=: #@[ }.each [ (E. <;.1 ]) ,
+   input =. ". > (10{a.) strsplit 1!:1 inputfile
    NB. +/ a input -> off by 2 because it has a 0 at the end
    f=. 3 : '0>._2+<.y%3'
    +/ f input NB. day 1-1
