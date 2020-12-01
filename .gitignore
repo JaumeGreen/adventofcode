@@ -1,2 +1,5 @@
 *.code-workspace
 *.input
+.vscode
+bin/
+obj/
