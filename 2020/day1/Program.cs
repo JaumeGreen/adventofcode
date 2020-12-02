@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 Console.WriteLine("Day1 Advent of code 2020");
-var lines = File.ReadAllLines(@"..\day1.txt").Select(Int32.Parse);
+var lines = File.ReadAllLines(@"..\day1.input").Select(Int32.Parse);
 foreach (var val in lines)
 {
     if (lines.Contains(2020-val))

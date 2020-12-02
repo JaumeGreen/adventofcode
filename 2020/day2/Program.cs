@@ -6,7 +6,7 @@ using System.Linq;
 Console.WriteLine("Day2 Advent of code 2020");
 var validPasswords1=0;
 var validPasswords2=0;
-var lines = File.ReadAllLines(@"..\day2.txt");
+var lines = File.ReadAllLines(@"..\day2.input");
 /*var lines = new List<string> (){
     "1-3 a: abcde",
     "1-3 b: cdefg",
