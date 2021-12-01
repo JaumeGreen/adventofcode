@@ -8,20 +8,23 @@ https://adventofcode.com/
 ## 2021
 
 languages used:
-C# via .Net interactive notebooks in vscode
+
+* C# via .Net interactive notebooks in vscode
 
 ## 2020
 
 languages used
-C#
-Some days done one part with J
+
+* C#
+* Some days done one part with J
 
 This year I decided to take it in "easy mode" as it's in a language that I use almost daily. The only divergences are that I'm doing it with Visual Studio Code and dotnet 5, instead of my usual tools.
 
 ## 2019
 
 languages used:
-J : https://www.jsoftware.com
+
+* J : https://www.jsoftware.com
 
 day 1 done
 day 4 half day done
@@ -47,7 +50,8 @@ This language is a bit esoteric for my taste, but I love the single executable t
 ## 2017
 
 languages used:
-common lisp (SBCL)
+
+* common lisp (SBCL)
 
 Done in 2017.
 
