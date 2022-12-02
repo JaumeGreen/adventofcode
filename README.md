@@ -9,7 +9,7 @@ https://adventofcode.com/
 
 Languages used:
 
- * J
+ * J - there are log.ijs and solution.ijs files. The problems are solved in solution, while log explains the solutions
  * C#
 
  C# was used on day01 in order to finish it fast. There is a competition at my job and I didn't know if they would count time. They only count stars.
