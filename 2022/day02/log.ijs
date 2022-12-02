@@ -1,3 +1,97 @@
+NB. After trying a lot to solve the problem that wasn't (find the best XYZ possible)
+NB. finally I found a way to solve it.
+NB. Let's start reading the file (test file)
+
+   ]data=: cutopen 1!:1<'/home/deck/projects/adventofcode/2022/d02t1.input'
+┌───┬───┬───┐
+│A Y│B X│C Z│
+└───┴───┴───┘
+
+NB. !: https://code.jsoftware.com/wiki/Vocabulary/bangco Foreign (System functions)
+NB. 1!:1 https://code.jsoftware.com/wiki/Vocabulary/Foreigns File read
+NB. cutopen https://www.jsoftware.com/help/user/lib_stdlib.htm#cutopen cut input and put into boxes
+NB. =: https://code.jsoftware.com/wiki/Vocabulary/eqco asign to global scope
+NB. ] https://code.jsoftware.com/wiki/Vocabulary/squarert show result
+
+NB. Now we have all the inputs to process, we only have to evaluate them.
+NB. The way I found was using the select. https://code.jsoftware.com/wiki/Vocabulary/selectdot
+
+   part1=: 3 : 0
+select. y
+case. 'A X' do.
+4
+case. 'A Y' do.
+8
+case. 'A Z' do.
+3
+case. 'B X' do.
+1
+case. 'B Y' do.
+5
+case. 'B Z' do.
+9
+case. 'C X' do.
+7
+case. 'C Y' do.
+2
+case. 'C Z' do.
+6
+end.
+)
+   part1 data
+8
+   part1 each data
+┌─┬─┬─┐
+│8│1│6│
+└─┴─┴─┘
+   part2=: 3 : 0
+select. y
+case. 'A X' do.
+3
+case. 'A Y' do.
+4
+case. 'A Z' do.
+8
+case. 'B X' do.
+1
+case. 'B Y' do.
+5
+case. 'B Z' do.
+9
+case. 'C X' do.
+2
+case. 'C Y' do.
+6
+case. 'C Z' do.
+7
+end.
+)
+   part2 each data
+┌─┬─┬─┐
+│4│1│7│
+└─┴─┴─┘
+
+NB. each https://www.jsoftware.com/help/user/lib_stdlib.htm#each executes the arguments cell by cell after unboxing
+NB. If we do it without each it only does the first element.
+NB. As the result is boxed we need to unbox it, then add the different results.
+   +/>part1&.>data
+15
+   +/>part2&.>data
+12
+
+NB. > https://code.jsoftware.com/wiki/Vocabulary/gt
+NB. &. https://code.jsoftware.com/wiki/Vocabulary/ampdot execute cell by cell
+NB. &.> is equivalent to each. Used this instead of each to make it more unreadable :D
+NB. / https://code.jsoftware.com/wiki/Vocabulary/slash use the function on the left between all the elements on the right
+NB. + https://code.jsoftware.com/wiki/Vocabulary/plus#dyadic it will be the dyadic, as it will be between the elements
+NB. +/ means add all.
+
+NB. With this all the parts are solved. But I didn't like it much. Too verbose.
+NB. So I went looking for improvements in programming@jsoftware.com.
+NB. Two people answered. Let's examine their solutions.
+
+ev =: (9 3$'A XA YA ZB XB YB ZC XC YC Z')&(4 8 3 1 5 9 7 2 6 { ~ i.)
+
  lines =: [: cutopen [: 1!:1 <
    nums =: [: ".@> lines
    d =: lines '/home/deck/projects/adventofcode/2022/d02t1.input'
