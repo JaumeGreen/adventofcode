@@ -79,12 +79,12 @@ NB. As the result is boxed we need to unbox it, then add the different results.
    +/>part2&.>data
 12
 
-NB. > https://code.jsoftware.com/wiki/Vocabulary/gt
+NB. > https://code.jsoftware.com/wiki/Vocabulary/gt open (unbox)
 NB. &. https://code.jsoftware.com/wiki/Vocabulary/ampdot execute cell by cell
 NB. &.> is equivalent to each. Used this instead of each to make it more unreadable :D
 NB. / https://code.jsoftware.com/wiki/Vocabulary/slash use the function on the left between all the elements on the right
 NB. + https://code.jsoftware.com/wiki/Vocabulary/plus#dyadic it will be the dyadic, as it will be between the elements
-NB. +/ means add all.
+NB. so +/ means add all.
 
 NB. With this all the parts are solved. But I didn't like it much. Too verbose.
 NB. So I went looking for improvements in programming@jsoftware.com.
