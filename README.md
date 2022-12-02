@@ -5,6 +5,19 @@ Done as time permits.
 
 https://adventofcode.com/
 
+## 2022
+
+Languages used:
+
+ * J
+ * C#
+
+ C# was used on day01 in order to finish it fast. There is a competition at my job and I didn't know if they would count time. They only count stars.
+
+ So I won't need to do them twice and I can try hard mode again.
+
+ The most innovative thing I'm doing is that I'm using my Steam Deck as my computer. My other personal computers are a Raspberry pi or over 8 years old.
+
 ## 2021
 
 languages used:
