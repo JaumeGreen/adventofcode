@@ -60,3 +60,11 @@ NB. step4_1 will be the last for the 1st part, step5 is only for part 2.
 
 p =. toJ 1!:1<'/home/deck/projects/adventofcode/2022/day01.input'
 p rplc (LF,LF);';';LF;','
+   p =. toJ 1!:1<'/home/deck/projects/adventofcode/2022/d01t1.input'
+   cutpara p
+┌───────────────┬─────┬──────────┬───────────────┬──────┐
+│1000 2000 3000 │4000 │5000 6000 │7000 8000 9000 │10000 │
+└───────────────┴─────┴──────────┴───────────────┴──────┘
+   {.\:~>+/ each cutpara p
+|domain error
+|   {.\:~>    +/each cutpara p

@@ -88,9 +88,41 @@ NB. so +/ means add all.
 
 NB. With this all the parts are solved. But I didn't like it much. Too verbose.
 NB. So I went looking for improvements in programming@jsoftware.com.
-NB. Two people answered. Let's examine their solutions.
+NB. Some people answered. Let's examine their solutions.
 
-ev =: (9 3$'A XA YA ZB XB YB ZC XC YC Z')&(4 8 3 1 5 9 7 2 6 { ~ i.)
+   parsed=: ('ABC',:'XYZ') i."1 |:-.&' ';._2 input,LF
+   part1=: {{ +/1+y+3*3|(1+y)-x }}/
+   part1 parsed
+15
+   part2=: {{ +/(3*y)+4|&.<:x+y }}/
+   part2 parsed
+12
+
+NB. Let's understand these expressions, starting with parsed.
+NB. ,: https://code.jsoftware.com/wiki/Vocabulary/commaco#dyadic create a 2 item array
+   'ABC',:'XYZ'
+ABC
+XYZ
+NB. i. https://code.jsoftware.com/wiki/Vocabulary/idot#dyadic index of, to find something
+   ('ABC',:'XYZ') i. 'A'
+2
+   ('ABC',:'XYZ') i. 'Y'
+2
+   ('ABC',:'XYZ') i. 'ABC'
+0
+   ('ABC',:'XYZ') i. 'XYZ'
+1
+NB. It needs to match the full line. When not found it will return the number of elements
+NB. which will be higher than the index (0-based). To find a letter we need to change the rank.
+NB. " https://code.jsoftware.com/wiki/Vocabulary/quote changes the rank where it applies the function
+
+
+   ev=:(9 3$'A XA YA ZB XB YB ZC XC YC Z')&(4 8 3 1 5 9 7 2 6 { ~i.)
+   ev 'A X'
+4
+   parsed=: ('ABC',:'XYZ') i."1 |:-.&' ';._2 input
+   part1=: {{ +/1+y+3*3|(1+y)-x }}/
+   part2=: {{ +/(3*y)+4|&.<:x+y }}/
 
  lines =: [: cutopen [: 1!:1 <
    nums =: [: ".@> lines
