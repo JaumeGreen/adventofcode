@@ -114,12 +114,93 @@ NB. i. https://code.jsoftware.com/wiki/Vocabulary/idot#dyadic index of, to find 
 1
 NB. It needs to match the full line. When not found it will return the number of elements
 NB. which will be higher than the index (0-based). To find a letter we need to change the rank.
-NB. " https://code.jsoftware.com/wiki/Vocabulary/quote changes the rank where it applies the function
+NB. " https://code.jsoftware.com/wiki/Vocabulary/quote changes the rank where it applies the function.
+NB. Let's examine the second half.
+   |:-.&' ';._2 input,LF
+ABC
+YXZ
+NB. input is the raw input, and we add an LF to the end because reading the file seems to strip it.
+NB. Let's do it with an explicit input, so we can understand it better.
+NB. ;._2 https://code.jsoftware.com/wiki/Vocabulary/semidot1 partitions y using the last element of y, removes it from the results.
+   ] ;._2 'A Y',LF,'B X',LF,'C Z',LF
+A Y
+B X
+C Z
+NB. Now we want to remove the spaces with -.
+NB. -. https://code.jsoftware.com/wiki/Vocabulary/minusdot#dyadic less, remove elements.
+   'a x'-.' '
+ax
+   ' '-.'a x'
 
+NB. As we see it should have the elements on the left, thus we use & to bind the operand ' ' to the right
+NB. & https://code.jsoftware.com/wiki/Vocabulary/ampm make a monad from a dyad
+   removespaces=:-.&' '
+   removespaces 'a x'
+ax
+   -.&' ';._2 'A Y',LF,'B X',LF,'C Z',LF
+AY
+BX
+CZ
+NB. |: https://code.jsoftware.com/wiki/Vocabulary/barco transpose, reverses the axys.
+   |:-.&' ';._2 input,LF
+ABC
+YXZ
+NB. " https://code.jsoftware.com/wiki/Vocabulary/quote rank, changes were it applies the function
+   |:-.&' ';._2 input,LF
+ABC
+YXZ
+   ('ABC',:'XYZ')
+ABC
+XYZ
+   ]parsed=: ('ABC',:'XYZ') i. |:-.&' ';._2 input,LF NB. ABC vs ABC and YXZ vs XYZ
+0 2
+   ]parsed=: ('ABC',:'XYZ') i."0 |:-.&' ';._2 input,LF NB. A-A, B-B, C-C, X-Y, Y-X, Z-Z
+0 0 0
+1 1 0
+   ]parsed=: ('ABC',:'XYZ') i."1 |:-.&' ';._2 input,LF NB. A, B, C in ABC and Y, X, Z in XYZ
+0 1 2
+1 0 2
 
+NB. Now what's left is to evaluate the score.
+   part1=: {{ +/1+y+3*3|(1+y)-x }}/
+   part1 parsed
+15
+   part2=: {{ +/(3*y)+4|&.<:x+y }}/
+   part2 parsed
+12
+NB. u/y https://code.jsoftware.com/wiki/Vocabulary/slash inserts u between members of y
+NB. {{}} https://code.jsoftware.com/wiki/Vocabulary/DirectDefinition can create a conjunction, adverb or verb
+   ]hands=: 2 9 $ 0 0 0 1 1 1 2 2 2 0 1 2 0 1 2 0 1 2
+0 0 0 1 1 1 2 2 2
+0 1 2 0 1 2 0 1 2
+   {{ 1+y+3*3|(1+y)-x }}/hands
+4 8 3 1 5 9 7 2 6
+   0 0 0 1 1 1 2 2 2{{ (1+y)-x }}/0 1 2 0 1 2 0 1 2
+1 2 3 0 1 2 _1 0 1
+   vl=.0 0 0 1 1 1 2 2 2{{ (1+y)-x }}/0 1 2 0 1 2 0 1 2
+   3|vl
+1 2 0 0 1 2 2 0 1 NB. multiplying by 3 these are the points for winning/tying/losing.
+   1+(0 1 2 0 1 2 0 1 2)+3*3|vl 
+4 8 3 1 5 9 7 2 6
+NB. So 1+y+3*3|(1+y)-x is a formula to calculate the result directly from the values
+NB. | https://code.jsoftware.com/wiki/Vocabulary/bar#dyadic residue from division
+
+NB. Let's examine the other answer.
    ev=:(9 3$'A XA YA ZB XB YB ZC XC YC Z')&(4 8 3 1 5 9 7 2 6 { ~i.)
    ev 'A X'
 4
+   9 3$'A XA YA ZB XB YB ZC XC YC Z'
+A X
+A Y
+A Z
+B X
+B Y
+B Z
+C X
+C Y
+C Z
+
+
    parsed=: ('ABC',:'XYZ') i."1 |:-.&' ';._2 input
    part1=: {{ +/1+y+3*3|(1+y)-x }}/
    part2=: {{ +/(3*y)+4|&.<:x+y }}/

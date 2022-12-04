@@ -9,14 +9,12 @@ https://adventofcode.com/
 
 Languages used:
 
- * J - there are log.ijs and solution.ijs files. The problems are solved in solution, while log explains the solutions
+ * J - Three kinds od files, not all of them present everyday. In order they are log.ijs (the partial or full log of the REPL when finding the solution), solution.ijs (full or partial solution for the day) and explanation.ijs (a detailed explanation to understand what has been done)
  * C#
 
- C# was used on day01 in order to finish it fast. There is a competition at my job and I didn't know if they would count time. They only count stars.
+ C# was used on day01 in order to finish it fast. There is a competition at my job and I didn't know if they would count time. Finally they only count stars, so I can try hard mode (pure J) directly.
 
- So I won't need to do them twice and I can try hard mode again.
-
- The most innovative thing I'm doing is that I'm using my Steam Deck as my computer. My other personal computers are a Raspberry pi or over 8 years old.
+ The most innovative thing I'm doing is that I'm using my Steam Deck as my computer, as my other personal computers are a Raspberry pi or over 8 years old. Some days I might use my mobile to do part of the J solution.
 
 ## 2021
 
