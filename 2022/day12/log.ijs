@@ -451,3 +451,23 @@ end.
 smoutput it;' cur ';cur;' m ';(cur{map);' e ';(ne{map);' e '; ~.isend cur
 it-1
 )
+
+surr=:{{ ((y-1)^:(0<ncol|y), (y+1)^:((ncol-1)>ncol|y), (y-ncol)^:(0<<.y%ncol), (y+ncol)^:((nlin-1)><.y%ncol))}}
+   (]%&ncol) 32
+4
+   (]+&ncol)^:((nlin&-&1)&><.]%&ncol) 32
+64
+   (]+&ncol)^:((nlin&-&1)&>@<.]%&ncol) 32
+64
+   maxl=:4
+   (]+&ncol)^:(maxl&><.]%ncol) 32
+40
+   {{maxl><.y%ncol}} 32
+0
+   13 :'maxl><.y%ncol'
+4 > [: (<.) 8 %~ ]
+   (4 > [: (<.) 8 %~ ])31
+1
+   (4 > [: (<.) 8 %~ ])32
+0
+   
