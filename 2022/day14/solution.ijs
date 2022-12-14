@@ -1,3 +1,12 @@
+NB. Sample usage
+NB. 
+NB.    w=:walls init 'day14'
+NB.    pour w
+NB. 665
+NB.    pour2 w NB. It's not fast
+NB. 25434
+
+
    read=:{{cutopen 1!:1 <'/home/deck/projects/adventofcode/2022/',y,'.input'}}
    tonum=:{{(0".@] rplc &('->';' '))y}}
    tocols=:] $~ 2 ,~ 2 %~ #

@@ -230,3 +230,24 @@ great=:{{y comp2 y}}
    lesser=:{{1=>x comp2 each y}}
    equal=:{{2=>x comp2 each y}}
    greater=:{{0=>x comp2 each y}}
+
+lesser=:{{1=>x comp each y}}
+equal=:{{2=>x comp each y}}
+greater=:{{0=>x comp each y}}
+
+quickp=: 3 : 0
+ if. 1 >: #y do. y
+ else. 
+  (quickp y lesser sel e),(y equal sel e),quickp y greater sel e=.y{~?#y
+ end.
+)
+
+d1=:'[[2]]'
+d2=:'[[6]]'
+a=:prep d1
+b=:prep d2
+
+firsth=:{{x lesser (i.150){y}}
+secondh=:{{x lesser (150+i.150){y}}
+calc=:{{(x firsth y) + x secondh y }}
+
