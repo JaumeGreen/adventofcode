@@ -24,12 +24,11 @@ else. NB. horizontal wall
     (min+i.1+max-min),.({:x)
 end.
 )
-   split=:{{({.y)u{:y}}
    wall=: (1 2$0) -.~ [: ~. [: tocols [: ; 2 lin (1 : '({.y)u{:y')\ ]
    walls=:{{;wall each y}}
 
 NB. Sands pouring from 500 0
-   sands=:500 0
+    sands=:500 0
 
     low=:(([: {: [) >. [: {: ])/
     down=: 0 1
@@ -54,6 +53,39 @@ whilst. lower>{:sand do.
     end.
     NB. this grain of sand stops here
     blocks=:blocks,sand
+    sand=:sands
+end.
+(#blocks)-#y
+)
+
+    pour2=: 3 : 0
+sand=:sands
+lower=:low y
+floor=:lower+2
+blocks=:y
+whilst. floor>{:sand do.
+    if. floor=1+{:sand do.
+        blocks=:blocks,sand
+        sand=:sands
+        continue.
+    end.
+    if. -.(sand+down) e. blocks do.
+        sand=:sand+down
+        continue.
+    end.
+    if. -.(sand+left) e. blocks do.
+        sand=:sand+left
+        continue.
+    end.
+    if. -.(sand+right) e. blocks do.
+        sand=:sand+right
+        continue.
+    end.
+    NB. this grain of sand stops here
+    blocks=:blocks,sand
+    if. 0={:sand do.
+        break. NB. Stop ceiling
+    end.
     sand=:sands
 end.
 (#blocks)-#y
