@@ -5,6 +5,14 @@ Done as time permits.
 
 https://adventofcode.com/
 
+## 2023
+
+Languages used:
+
+* Raku, aka perl 6. Most of what I read about it is nice, and its philosophy is close to mine. I had to try it. I'd love to see the experts' solutions in this language. I'm sure those will be great.
+
+I also am prepared to work in C# or J, just in case.
+
 ## 2022
 
 Languages used:

@@ -298,4 +298,7 @@ $ ls
 5626152 d.ext
 7214296 k
 
-   
+   NB. Try again after day 15!
+   read=:{{1!:1<'/home/deck/projects/adventofcode/2022/',y,'.input'}}
+
+
