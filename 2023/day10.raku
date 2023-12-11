@@ -1,5 +1,5 @@
 my $result =0;
-my int64 $result2 =0;
+my $result2 =0;
 
 my @lines =  '2023/day10.input'.IO.lines;
 my @map = @lines.map(->$l { $l.split("",:skip-empty) } );
@@ -58,7 +58,7 @@ sub getDir ($x, $y) {
 }
 enum Colors <Black Red Blue White>;
 my @colorMap;
-for 0..^$ysize -> $row {
+for 0..$ysize -> $row { #one line more, explained below
     for 0..^$xsize -> $column {
         @colorMap[$row;$column] = White;
     }
@@ -120,14 +120,58 @@ repeat until @map[$y][$x]==='S' {
     #say $x," ", $y," ", $result," ", $dir;
 }
 
-for @colorMap {
-    say $_.join('')
+enum State <Start Whites Reds Blues Nones>;
+my $found = False;
+my $good = Nones;
+for 0..$ysize -> $row {
+    my $state = Start;
+    for 0..^$xsize -> $column {
+        #say $state, " ", @colorMap[$row][$column], $found, $good;
+        given @colorMap[$row][$column] {
+            when White {
+                if $state==Reds && $good!=Blue {
+                    @colorMap[$row][$column]=Red;
+                }
+                if $state==Blues && $good!=Red {
+                    @colorMap[$row][$column]=Blue;
+                }
+            }
+            when Black {$state = Nones}
+            when Red {
+                if $state==Start && !$found {
+                    $found = True;
+                    $good = Blue;
+                }
+                $state=Reds;
+            }
+            when Blue {
+                if $state==Start && !$found {
+                    $found = True;
+                    $good = Red;
+                }
+                $state=Blues;
+            }
+        }
+        #last;
+    }
+    #last;
+}
+
+say $good;
+my $ch="+";
+$ch="." if $good==Red;
+for @colorMap ->$row {
+    my $line = $row.join('')
         .subst(/White/," ", :g)
         .subst(/Black/,"#", :g)
-        .subst(/Blue/,".", :g)
-        .subst(/Red/,"+", :g)
+        .subst(/Blue/,"+", :g)
+        .subst(/Red/,".", :g)
         ;
+    #say 
+    my $temp = $line.match(:g,$ch).elems;
+    $result2+=$temp;
 }
+
 # Open vscode. visually examine if + or . are outside
 # in my case .
 # substitute ". " with ".." until all done.
