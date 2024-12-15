@@ -6,8 +6,8 @@ var day=6;
 
 Console.WriteLine($"Day{day} Advent of code 2024");
 
-//var lines = File.ReadAllLines(@"../day06.test4");
-var lines = File.ReadAllLines(@"../day06.input");
+var lines = File.ReadAllLines(@"../day06.test4");
+//var lines = File.ReadAllLines(@"../day06.input");
 char[][] map = lines.Select(x=>x.ToCharArray()).ToArray();
 int xguard=-1, yguard=-1;
 bool found = false;
